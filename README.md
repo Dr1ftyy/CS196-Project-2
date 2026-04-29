@@ -1,1 +1,3 @@
-# CS196-Project-2
+# Medical Data Base
+
+This data app is to simulate being a secratary 
