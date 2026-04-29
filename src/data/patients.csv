@@ -1,0 +1,4 @@
+patient_id,name,dob,phone,email,insurance,condition
+P001,John Smith,1985-03-12,555-1234,john@email.com,BlueCross,Hypertension
+P002,Maria Garcia,1992-07-24,555-5678,maria@email.com,Aetna,Diabetes
+P003,James Lee,1978-11-05,555-9012,james@email.com,United,Asthma

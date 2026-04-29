@@ -1,0 +1,4 @@
+billing_id,patient_id,appointment_id,procedure,cost,insurance_coverage,paid
+B001,P001,A001,Checkup,200.00,0.80,Yes
+B002,P002,A002,Blood Test,350.00,0.75,No
+B003,P003,A003,Consultation,150.00,0.70,No
