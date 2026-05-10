@@ -51,11 +51,15 @@ def main():
         st.metric("Insurance", patient['insurance'])
     with col3:
         st.metric("Condition", patient['condition'])
-        
-    #personal info section
+
+    st.divider()
 
     #appointments section
-
+    st.subheader("Your Appointments")
+    if patient_appointments.empty:
+        st.info("You have no upcoming appointments.")
+    else:
+        for _, appt in patient_appointments.itterows():
     #billing section
 
     #patient questionarire? 
