@@ -30,7 +30,8 @@ def main():
     patient_billing = billing[billing['patient_id'] == patient_id]
 
     #header
-
+    st.title(f"Welcome {patient['name']}!")
+    st.caption(f"Patient ID: {patient_id}")
     #logout button 
 
     #general info section
@@ -43,4 +44,3 @@ def main():
 
     #patient questionarire? 
 
-    
