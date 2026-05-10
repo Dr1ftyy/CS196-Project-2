@@ -140,6 +140,12 @@ def main():
         st.success(f"Appointment requested for {appt_date} at {appt_time}!")
         st.rerun()
 
+    st.divider()
+
+    #edit personal info
+    st.subheader("Update Your Information")
+    with st.form("update_info"):
+
     #patient questionarire
     st.subheader("Health Questionnaire")
     st.caption("Help us understand how you're feeling before your next visit")
