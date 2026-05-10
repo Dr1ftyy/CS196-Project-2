@@ -1,3 +1,3 @@
 # Medical Data Base
 
-This data app is to simulate being a secratary 
+This data app is to simulate being a secratary testing 
