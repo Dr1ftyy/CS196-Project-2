@@ -68,10 +68,12 @@ def main():
                     email = st.text_input("Email Address")
                     insurance = st.selectbox("Insurace Provider", ["BlueCross", "Aetna", "United Healthcare", "Cigna", "Humana", "Other"])
                     condition = st.text_input("Primary Medical Condition")
-                    submit = st.form_submit_button("Register")
+                    submitted = st.form_submit_button("Register")
 
-                    if submit:
+                    if submitted:
                         #auto generate a new patient id
+                         new_id = f"P{len(patient_id) + 1:03d}"
+                         
 
 
     if __name__ == "__main__":
