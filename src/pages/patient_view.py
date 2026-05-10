@@ -17,9 +17,10 @@ def load_data():
 
 def main():
     #redirect if not logged in
-    if "logged_in" not in st.session_state or not st.session_state.logged_in:
-        st.switch_page("main.py")
-        return
+    patient_id = st.session_state.get("patient_id")
+    if not patient_id:
+        st.error("No patient ID found. Please login again.")
+        st.stop()
     
     patient_id = st.session_state.patient_id
     patients, appointments, doctors, billing = load_data()
