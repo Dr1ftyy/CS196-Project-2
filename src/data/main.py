@@ -51,7 +51,11 @@ def main():
         else:
             st.error("Incorrect Password")
     #patient login form
-
+    else:
+        st.subheader("Patient Login")
+        patient_id = st.text_input("Enter Patient ID")
+        if st.button("Login"):
+            
 
     if __name__ == "__main__":
         main()
