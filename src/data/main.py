@@ -42,6 +42,14 @@ def main():
 
     #admin login form
     if st.session_state.show_admin_login:
+        st.subheader("Admin Login")
+        password = st.text_input("Enter Admin Password", type = "Password")
+        if password == "admin123":
+            st.session_state.logged_in = True
+            st.session_state.role = "admin"
+            st.switch_page("pages/admin_view.py")
+        else:
+            st.error("Incorrect Password")
     #patient login form
 
 
