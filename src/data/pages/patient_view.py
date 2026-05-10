@@ -71,8 +71,31 @@ def main():
                     better = appt.get ('getting_better', 'N/A')
                     st.write(f"**Getting Better?** {better}")
 
-    #billing section
+    st.divider()
 
+    #billing section
+    st.subheader("Your Billing")
+    if patient_billing.empty:
+        st.info("No billing records found.")
+    else:
+        total_cost = 0.0
+        total_oop = 0.0 #oop stands for out of pocket cost after insurance
+        for _, bill in patient_billing.iterrows():
+            cost = float(bill['cost'])
+            coverage = float(bill['insurance_coverage'])
+            oop = cost * (1 - coverage)
+            total_cost += cost
+            total_oop += oop
+
+            with st.expander(f"{'✅' if bill['paid'] == 'Yes' else '❌'} {bill['procedure']} - ${cost:.2f}"):
+                st.write(f"**Procedure:** {bill['prodcedure']}")
+                st.write(f"**Total Cost:** ${cost:.2f}")
+                st.write(f"**Insurance Coverage:** {int(coverage * 100)}%")
+                st.write(f"**Your Out-of-Pocket Cost:** ${oop:.2f}")
+                st.write(f"**Paid:** {bill['paid']}")
+
+    st.divider()
+    
     #patient questionarire? 
 
 if __name__ == "__main__":
