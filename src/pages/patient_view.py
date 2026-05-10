@@ -25,9 +25,11 @@ def main():
     patients, appointments, doctors, billing = load_data()
 
     #get this patient's data from the csv files
-    patient = patients[patients["patient_id"] == patient_id].iloc[0]
-    patient_appointments = appointments[appointments['patient_id'] == patient_id]
-    patient_billing = billing[billing['patient_id'] == patient_id]
+    match = patients[patients["patient_id"].str.upper() == patient_id.upper()]
+    if match.empty:
+        st.error("Patient record not found.")
+        st.stop()
+    patient = match.iloc[0]
 
     #header
     st.title(f"Welcome {patient['name']}!")
