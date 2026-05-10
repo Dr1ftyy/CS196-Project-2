@@ -108,9 +108,23 @@ def main():
 
     st.divider()
 
-    
+    #schedlue new appointment
+    st.subheader("Schedule an Appointment")
+    with st.form ("schedule_appt"):
+        #build doctor options from doctors data frame
+        doctor_options = {f"{row['name']} ({row['specality']}) - {row['office']}": row['doctor_id']
+                          for _, row in doctors.iterrows()}
+        selected_doctor = st.selectbox("Select a Doctor", list(doctor_options.keys()))
+        appt_date = st.date_input("Preffered Date")
+        appt_time = st.time_input("Preferred Time")
+        reason = st.text_area("Reason for Visit")
+        submittetd = st.form_submit_button("Request Appointment")
 
-    #patient questionarire? 
+        if submitted:
+            #load a fresh copy of the appts
+            
+
+    #patient questionarire
     st.subheader("Health Questionnaire")
     st.caption("Help us understand how you're feeling before your next visit")
     with st.form("questionnaire"):
