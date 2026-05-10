@@ -28,4 +28,22 @@ def main():
             st.switch_page("pages/patient_view.py")
         return
     
+    #top right admin button
+    col1, col2 = st.columns([8, 1])
+    with col2:
+        if st.buton("Admin"):
+            st.session_state.show_admin_login = True
     
+    #main login UI
+    with col1: st.title("MedDesk")
+    st.subheader("Patient Portal")
+
+    st.divider
+
+    #admin login form
+    if st.session_state.show_admin_login:
+    #patient login form
+
+
+    if __name__ == "__main__":
+        main()
