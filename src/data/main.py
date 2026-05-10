@@ -76,7 +76,7 @@ def main():
                          new_row = pd.DataFrame([[new_id, name, dob, phone, email, insurance, condition]], columns=patient_df.columns)
                          updated_df = pd.concat([patient_df, new_row], ignore_index=True)
                          updated_df.to_csv(get_data_path("patients.csv"), index=False)
-                         st.success(f"Registration successful! Your Patient ID is {new_id}. Please use this ID to log in."))
+                         st.success(f"Registration successful! Your Patient ID is {new_id}. Please use this ID to log in.")
 
 
 
