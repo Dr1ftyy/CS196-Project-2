@@ -56,7 +56,10 @@ def main():
         patient_id = st.text_input("Enter Patient ID")
         if st.button("Login as Patient"):
             #read through data and check if patient id exists
-            
+            if patient_id.strip().upper() not in valid_ids:
+                st.error("Patient ID not found")
+                st.info("Are you a new patient? Register below!")
+                
 
 
     if __name__ == "__main__":
