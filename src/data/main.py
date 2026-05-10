@@ -86,5 +86,6 @@ def main():
                         updated_df.to_csv(get_data_path("patients.csv"), index = False)
                         st.success(f"Registered! Your Patient ID is {new_ID}. Please use this to log in moving forward")
 
+
 if __name__ == "__main__":
     main()
