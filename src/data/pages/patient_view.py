@@ -32,8 +32,9 @@ def main():
     #header
     st.title(f"Welcome {patient['name']}!")
     st.caption(f"Patient ID: {patient_id}")
-    #logout button 
 
+    #logout button 
+    
     #general info section
 
     #personal info section
