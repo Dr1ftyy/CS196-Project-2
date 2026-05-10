@@ -94,12 +94,12 @@ def main():
                 st.write(f"**Your Out-of-Pocket Cost:** ${oop:.2f}")
                 st.write(f"**Paid:** {bill['paid']}")
 
-    st.divider()
-    col1, col2 = st.columns(2)
-    with col1:
-        st.metric("Total Billed", f"${total_cost:.2f}")
-    with col2:
-        st.metric("Total Out-of-Pocket", f"${total_oop:.2f}")
+        st.divider()
+        col1, col2 = st.columns(2)
+        with col1:
+            st.metric("Total Billed", f"${total_cost:.2f}")
+        with col2:
+            st.metric("Total Out-of-Pocket", f"${total_oop:.2f}")
 
     
     #patient questionarire? 
