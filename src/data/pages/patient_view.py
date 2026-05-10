@@ -21,4 +21,26 @@ def main():
         st.switch_page("main.py")
         return
     
+    patient_id = st.session_state.patient_id
+    patients, appointments, doctors, billing = load_data()
+
+    #get this patient's data from the csv files
+    patient = patients[patients["patient_id"] == patient_id].iloc[0]
+    patient_appointments = appointments[appointments['patient_id'] == patient_id]
+    patient_billing = billing[billing['patient_id'] == patient_id]
+
+    #header
+
+    #logout button 
+
+    #general info section
+
+    #personal info section
+
+    #appointments section
+
+    #billing section
+
+    #patient questionarire? 
+
     
