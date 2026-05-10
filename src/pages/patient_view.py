@@ -19,7 +19,7 @@ def load_data():
 
 def main():
     #redirect if not logged in
-    if "logged_in" not in st.session_state or not st.session_sate.logged_in:
+    if "logged_in" not in st.session_state or not st.session_state.logged_in:
         st.switch_page("main.py")
         return
     
@@ -61,7 +61,7 @@ def main():
     if patient_appointments.empty:
         st.info("You have no upcoming appointments.")
     else:
-        for _, appt in patient_appointments.itterows():
+        for _, appt in patient_appointments.iterrows():
             doctor = doctors[doctors['doctor_id'] == appt['doctor_id']] .iloc[0]
             status_color = "green" if appt['status'] == "Completed" else "orange"
             with st.expander(f"{status_color} {appt['date']} at {appt['time']} - {doctor['name']}"):
@@ -90,7 +90,7 @@ def main():
             total_oop += oop
 
             with st.expander(f"{'✅' if bill['paid'] == 'Yes' else '❌'} {bill['procedure']} - ${cost:.2f}"):
-                st.write(f"**Procedure:** {bill['prodcedure']}")
+                st.write(f"**Procedure:** {bill['procedure']}")
                 st.write(f"**Total Cost:** ${cost:.2f}")
                 st.write(f"**Insurance Coverage:** {int(coverage * 100)}%")
                 st.write(f"**Your Out-of-Pocket Cost:** ${oop:.2f}")
