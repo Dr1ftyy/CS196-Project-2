@@ -70,6 +70,9 @@ def main():
                     condition = st.text_input("Primary Medical Condition")
                     submit = st.form_submit_button("Register")
 
+                    if submit:
+                        #auto generate a new patient id
+
 
     if __name__ == "__main__":
         main()
