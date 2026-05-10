@@ -34,7 +34,12 @@ def main():
     st.caption(f"Patient ID: {patient_id}")
 
     #logout button 
-    
+    if st.button("Logout"):
+        st.session_state.logged_in = False
+        st.session_state.role = None
+        st.session_state.patient_id = None
+        st.switch_page("main.py")
+        
     #general info section
 
     #personal info section
