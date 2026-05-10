@@ -32,7 +32,7 @@ def main():
     patient = match.iloc[0]
 
     patient_appointments = appointments[appointments['patient_id'] == patient_id]
-    patient_billing = billing[patient_billing["patient_id"] == patient_id]
+    patient_billing = billing[billing["patient_id"] == patient_id]
 
     #header
     st.title(f"Welcome {patient['name']}!")
