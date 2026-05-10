@@ -2,6 +2,8 @@ import os
 import streamlit as st
 import pandas as pd
 
+st.write(st.session_state) #for debugging
+
 APP_PATH = os.path.dirname(os.path.abspath(os.path.join(__file__, "..")))
 
 def get_data_path(filename: str) -> str:
