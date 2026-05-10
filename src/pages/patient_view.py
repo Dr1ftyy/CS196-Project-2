@@ -39,7 +39,7 @@ def main():
     st.caption(f"Patient ID: {patient_id}")
 
     #logout button 
-    if st.button("Logout", key="logout_btn"):
+    if st.button("Logout", key="patient_logout_btn"):
         st.session_state.logged_in = False
         st.session_state.role = None
         st.session_state.patient_id = None
