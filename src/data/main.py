@@ -59,7 +59,16 @@ def main():
             if patient_id.strip().upper() not in valid_ids:
                 st.error("Patient ID not found")
                 st.info("Are you a new patient? Register below!")
-                
+
+                #form for the new patient
+                with st.form("new patient"):
+                    name = st.text_input("Full Name")
+                    dob = st.text_input("Date of Birth (YYYY-MM-DD)")
+                    phone = st.text_input("Phone Number")
+                    email = st.text_input("Email Address")
+                    insurance = st.selectbox("Insurace Provider", ["BlueCross", "Aetna", "United Healthcare", "Cigna", "Humana", "Other"])
+                    condition = st.text_input("Primary Medical Condition")
+                    submit = st.form_submit_button("Register")
 
 
     if __name__ == "__main__":
