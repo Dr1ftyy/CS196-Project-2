@@ -39,9 +39,19 @@ def main():
         st.session_state.role = None
         st.session_state.patient_id = None
         st.switch_page("main.py")
-        
-    #general info section
 
+    st.divider()
+
+    #personal info section
+    st.subheader("Your Information")
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric("Date of Birth", patient['dob'])
+    with col2:
+        st.metric("Insurance", patient['insurance'])
+    with col3:
+        st.metric("Condition", patient['condition'])
+        
     #personal info section
 
     #appointments section
