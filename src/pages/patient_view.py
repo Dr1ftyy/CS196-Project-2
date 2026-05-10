@@ -22,7 +22,6 @@ def main():
         st.error("No patient ID found. Please login again.")
         st.stop()
     
-    patient_id = st.session_state.patient_id
     patients, appointments, doctors, billing = load_data()
 
     #get this patient's data from the csv files
@@ -31,6 +30,9 @@ def main():
         st.error("Patient record not found.")
         st.stop()
     patient = match.iloc[0]
+
+    patient_appointments = appointments[appointments['patient_id'] == patient_id]
+    patient_billing = billing[patient_billing["patient_id"] == patient_id]
 
     #header
     st.title(f"Welcome {patient['name']}!")
