@@ -101,8 +101,18 @@ def main():
         with col2:
             st.metric("Total Out-of-Pocket", f"${total_oop:.2f}")
 
-    
+    st.divider()
+
     #patient questionarire? 
+    st.subheader("Health Questionnaire")
+    st.caption("Help us understand how you're feeling before your next visit")
+    with st.form("questionnaire"):
+        pain = st.slider("Pain Level (0 = none, 10 = severe)", 0, 10, 0)
+        symptoms = st.text_input("Any new or ongoing symptoms?")
+        medication = st.text_input("Current Medications (comma separated)")
+        submitted = st.form_submit_button("Submit")
+        if submitted:
+            st.success("Thank you! Your response have been noted for your doctor to review before your next appointment.")
 
 if __name__ == "__main__":
     main()
