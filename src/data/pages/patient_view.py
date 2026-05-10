@@ -60,7 +60,22 @@ def main():
         st.info("You have no upcoming appointments.")
     else:
         for _, appt in patient_appointments.itterows():
+            doctor = doctors[doctors['doctor_id'] == appt['doctor_id']] .iloc[0]
+            status_color = "green" if appt['status'] == "Completed" else "orange"
+            with st.expander(f"{status_color} {appt['date']} at {appt['time']} - {doctor['name']}"):
+                st.write(f"**Doctor:** {doctor['name']} ({doctor['specialty']})")
+                st.write(f"**Office:** {doctor['office']}")
+                st.write(f"**Status:** {appt['status']}")
+                st.write(f"**Docotor Notes:** {appt['notes']}")
+                if appt['status'] == 'Completed':
+                    better = appt.get ('getting_better', 'N/A')
+                    st.write(f"**Getting Better?** {better}")
+
     #billing section
 
     #patient questionarire? 
 
+if __name__ == "__main__":
+    main()
+
+main()
