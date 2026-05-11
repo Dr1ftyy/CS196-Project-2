@@ -9,7 +9,7 @@ def get_data_path(filename: str) -> str:
     return os.path.join(APP_PATH, "data", filename)
 
 def main():
-    st.set_page_config(page_title="MedDesk", page_icon="🏥", layout="wide")
+    st.set_page_config(page_title="Welcome to  the MedDesk Portal", page_icon="🏥", layout="wide")
 
     # initialize session state
     if 'logged_in' not in st.session_state:
