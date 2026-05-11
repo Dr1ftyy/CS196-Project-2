@@ -56,7 +56,7 @@ All data is stored in CSV files inside the `data/` folder. Every time the app is
 
 ## AI Usage
 
-Claude (claude.ai) was used during this project for debugging, explaing errors and guidance along with creating this README
+Claude (claude.ai) was used during this project for debugging, explaing errors and guidance along explaining how things worked as well as creating this README
 
 ---
 
