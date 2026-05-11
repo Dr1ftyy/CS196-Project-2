@@ -123,7 +123,7 @@ def main():
             col1, col2 = st.columns(2)
             with col1:
                 bill_patient = st.selectbox("Patient", patients['patient_id'] + " - " + patients['name'])
-                procedure = st.text_input_input("Procedure")
+                procedure = st.text_input("Procedure")
                 cost = st.number_input("Total Cost ($)", min_value = 0.0, format = "%.2f")
             with col2:
                 appt_options_bill = appointments['appointment_id']
