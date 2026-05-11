@@ -87,11 +87,19 @@ def main():
                 st.success(f"Patient added with ID {new_id}!")
                 st.rerun()
 
-            st.divider()
+        st.divider()
 
-            #delete patient
-            st.subheader("Delete Patient")
-            
+        #delete patient
+        st.subheader("Delete Patient")
+        patient_to_delete = st.selectbox("Select patient to delete",
+                                        patients['patient_id'] + " - " + patients['name'],
+                                        key = 'delete_patient')
+        if st.button("Delete Patient", key = "delete_patient_btn"):
+            pid = patient_to_delete.split(" - ")[0]
+            updated = patients[patients['patient_id'] != pid]
+            updated.to_csv(get_data_path("patients.csv"), index = False)
+            st.success(f"Patient {pid} deleted!")
+            st.rerun
         
 
     # Tab 2: Appointments
