@@ -144,7 +144,19 @@ def main():
 
     #edit personal info
     st.subheader("Update Your Information")
-        #with st.form("update_info"):
+    with st.form("update_info"):
+        new_phone = st.text_input("Phone Number", value = patient ['phone'])
+        new_email = st.text_input("Email", value = patient ['email'])
+        new_insurance = st.selectbox("Insurance Provider"
+                                     ["BlueCross", "Aetna", "United Healthcare", "Cigna", "Humana", "Other"],
+                                  index=["BlueCross", "Aetna", "United Healthcare", "Cigna", "Humana", "Other"].index(patient['insurance'])
+                                  if patient['insurance'] in ["BlueCross", "Aetna", "United Healthcare", "Cigna", "Humana", "Other"] else 0)
+    new_condition = st.text_input("Primary Condition", value=patient['condition'])
+    save = st.form_submit_button("Save Changes")
+
+    if save:
+        # load fresh copy and update the matching row
+        all_patients = pd.read_csv.
 
     #patient questionarire
     st.subheader("Health Questionnaire")
