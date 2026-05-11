@@ -62,6 +62,7 @@ def main():
 
         st.divider()
 
+        
 
     # Tab 2: Appointments
     with tab2:
