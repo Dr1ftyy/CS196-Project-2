@@ -130,7 +130,8 @@ def main():
         appt_id = selected_appt.split(" — ")[0]
         appt_row = appointments[appointments['appointment_id'] == appt_id].iloc[0]
 
-        
+        with st.form("update_appt"):
+            new_notes = 
 
 
     # Tab 3: Billing
