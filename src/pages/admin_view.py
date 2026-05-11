@@ -24,4 +24,11 @@ def main():
     
     st.title("🏥 MedDesk - Admin Panel")
 
-    st.divider()
+#logout button
+if st.button("Logout", key = "admin_logout"):
+    st.session_state.logged_in = False
+    st.session_state.role = None
+    st.switch_page("main.py")
+    
+st.divider()
+
