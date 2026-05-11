@@ -28,6 +28,7 @@ def main():
 if st.button("Logout", key = "admin_logout"):
     st.session_state.logged_in = False
     st.session_state.role = None
+    st.session_state.show_admin_login = False
     st.switch_page("main.py")
     
 st.divider()
