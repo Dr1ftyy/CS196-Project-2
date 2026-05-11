@@ -114,10 +114,23 @@ def main():
         else:
             filtered_appts = appointments
 
-        #merge with patient and docotr names for readability
+        #merging patient and docotor names so that its easy to read
         merged = filtered_appts.merge(patients[['patient_id', 'name']], on = 'patient', how = 'left')
         merged = merged.merge(doctors[['doctor_id', 'name']], on = 'doctor_id', how = 'left', suffixes = ('_patient', '_doctor'))
-        st.dataframe(merged)
+        st.dataframe(merged[['appointment_id', 'name_patient', 'name_doctor', 'date', 'time', 'status', 'notes', 'getting_better']],
+                     use_container_width = True)
+        
+        st.divider()
+
+        #add doctor notes and updates status
+        st.subheader("Update Appointment")
+        appt_options = appointments['appointment_id'] + " — " + appointments['patient_id']
+        selected_appt = st.selectbox("Select Appointment", appt_options)
+
+        appt_id = selected_appt.split(" — ")[0]
+        appt_row = appointments[appointments['appointment_id'] == appt_id].iloc[0]
+
+        
 
 
     # Tab 3: Billing
