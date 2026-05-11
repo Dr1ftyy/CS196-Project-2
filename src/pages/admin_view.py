@@ -79,7 +79,8 @@ def main():
             add_submitted = st.form_submit_button("Add Patient")
 
             if add_submitted:
-                new_id = f"P{len(patients) + 1:03d}"
+                existing_ids = patients['patient_id'].str.replace('P', '').astype(int)
+                new_id = f"P{existing_ids.max() + 1:03d}"
                 new_row = pd.DataFrame([[new_id, name, dob, phone, email, insurance, condition]],
                                        columns = patients.columns)
                 updated = pd.concat([patients, new_row], ignore_index = True)
@@ -171,7 +172,8 @@ def main():
             doc_submited = st.form_submit_button("Add Doctor")
 
         if doc_submited:
-            new_doc_id = f"D{len(doctors) + 1:03d}"
+            existing_ids = doctors['doctor_id'].str.replace('D', '').astype(int)
+            new_doc_id = f"D{existing_ids.max() + 1:03d}"
             new_doc = pd.DataFrame([[new_doc_id, doc_name, specialty, office]],
                                    columns = doctors.columns)
             updated_doctors = pd.concat([doctors, new_doc], ignore_index = True)

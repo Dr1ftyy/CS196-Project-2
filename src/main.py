@@ -77,7 +77,8 @@ def main():
                     submitted = st.form_submit_button("Register")
 
                     if submitted:
-                        new_id = f"P{len(patients_df) + 1:03d}"
+                        existing_ids = patients_df['patient_id'].str.replace('P', '').astype(int)
+                        new_id = f"P{existing_ids.max() + 1:03d}"
                         new_row = pd.DataFrame([[new_id, name, dob, phone, email, insurance, condition]],
                                                columns=patients_df.columns)
                         updated_df = pd.concat([patients_df, new_row], ignore_index=True)

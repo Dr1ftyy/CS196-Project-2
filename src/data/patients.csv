@@ -1,2 +1,4 @@
 patient_id,name,dob,phone,email,insurance,condition
 P002,John Smith,1956-12-12,555-4567,john@email.com,BlueCross,Hypertension
+P003,Justin Nina,2003-11-20,555-5590,justin@email.com,BlueCross,Heart Atrophy
+P004,Vlad Veksler,2000-10-20,555-1234,Vlad@email.com,United Healthcare,being too cool
