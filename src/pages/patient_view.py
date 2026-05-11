@@ -144,7 +144,7 @@ def main():
 
     #edit personal info
     st.subheader("Update Your Information")
-    with st.form("update_info"):
+        #with st.form("update_info"):
 
     #patient questionarire
     st.subheader("Health Questionnaire")
