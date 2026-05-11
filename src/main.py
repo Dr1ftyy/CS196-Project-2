@@ -82,7 +82,7 @@ def main():
                                                columns=patients_df.columns)
                         updated_df = pd.concat([patients_df, new_row], ignore_index=True)
                         updated_df.to_csv(get_data_path("patients.csv"), index = False)
-                        st.success(f"Registered! Your Patient ID is {new_ID}. Please use this to log in moving forward")
+                        st.success(f"Registered! Your Patient ID is {new_id}. Please use this to log in moving forward")
 
 
 if __name__ == "__main__":
