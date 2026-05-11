@@ -48,6 +48,10 @@ def main():
     # Tab 1: Patients
     with tab1:
         st.subheader("Patient Records")
+
+        #search bar
+        search = st.text_input("Search by name or patient ID")
+        
     # Tab 2: Appointments
     with tab2:
         st.subheader("All Appointments")
