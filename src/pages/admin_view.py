@@ -1,7 +1,7 @@
 import os
 import streamlit as st
 import pandas as pd
-#import matplotlib as plt
+import matplotlib as plt
 
 APP_PATH = os.path.dirname(os.path.abspath(os.path.join(__file__, "..")))
 
@@ -35,6 +35,8 @@ def main():
             st.switch_page("main.py")
         
     st.divider()
+
+    patients, appointments, doctors, billing = load_data()
 
     #tabs for different secionts the admin can look and view
     tab1, tab2, tab3, tab4, tab5 = st.tabs([
@@ -78,6 +80,15 @@ def main():
     with tab4:
         st.subheader("Analytics Dashboard")
 
+        col1, col2 = st.columns(2)
+
+        with col1:
+            #patients per doctor
+            st.markdown("**Patients per Doctor**")
+            merged_appts = appointments.merge(doctors[['doctor_id', 'name']], on = 'doctor_id', how = 'left')
+            patients_per_doctor = merged_appts.groupby('name')['patient_id'].nunique()
+            fig1, ax1 = plt.subplots
+
 
     # Tab 5: Doctors
     with tab5:
@@ -88,7 +99,7 @@ def main():
 
         st.subheader("Add Doctor")
         with st.form("add_doctor"):
-            col1, col2 st.columns(2)
+            col1, col2 = st.columns(2)
             with col1:
                 doc_name = st.text_input("Doctor's Name")
                 specialty = st.text_input("Speciality")
@@ -100,7 +111,7 @@ def main():
             new_doc_id = f"D{len(doctors) + 1:03d}"
             new_doc = pd.DataFrame([[new_doc_id, doc_name, specialty, office]],
                                    columns = doctors.columns)
-            updated_doctors = pd.concat([doctors, new_doc] ignore_index = True)
+            updated_doctors = pd.concat([doctors, new_doc], ignore_index = True)
             updated_doctors.to_csv(get_data_path("doctors.csv"), index = False)
             st.success(f"Doctor added with ID {new_doc_id}!")
             st.rerun()
