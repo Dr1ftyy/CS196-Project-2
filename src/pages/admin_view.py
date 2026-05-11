@@ -111,7 +111,37 @@ def main():
     # Tab 3: Billing
     with tab3:
         st.subheader("Billing Records")
+        
+        merged_billing = billing.merge(patients[['patient_id', 'name']], on = 'patient_id', how = 'left')
+        st.dataframe(merged_billing, use_container_width = True)
 
+        st.divider()
+
+        #add billing record
+        st.subheader("Add Billing Recod")
+        with st.form("add_billing"):
+            col1, col2 = st.columns(2)
+            with col1:
+                bill_patient = st.selectbox("Patient", patients['patient_id'] + " - " + patients['name'])
+                procedure = st.text_input_input("Procedure")
+                cost = st.number_input("Total Cost ($)", min_value = 0.0, format = "%.2f")
+            with col2:
+                appt_options_bill = appointments['appointment_id']
+                bill_appt = st.selectbox("Appointment ID", appt_options_bill)
+                coverage = st.slider("Insurace Coverage %", 0, 100, 80)
+                paid = st.selectbox("Paid?", ["No", "Yes"])
+            bill_submitted = st.form_submit_button("Add Billing Record")
+
+        if bill_submitted:
+            existing_ids = billing['billing_id'].str.replace('A', '').astype(int)
+            new_bill_id = f"A{existing_ids.max() + 1:03d}"
+            pid = bill_patient.split(" - ")[0]
+            new_bill = pd.DataFrame([new_bill,  pid, bill_appt, procedure, cost, coverage/100, paid],
+                                    columns = billing.columns)
+            updated_billing = pd.concat([billing, new_bill], ignore_index = True)
+            updated_billing.to_csv(get_data_path("billing.csv"), index = False)
+            st.success("Billing record added!")
+            st.rerun()
 
     # Tab 4: Analytics
     with tab4:
