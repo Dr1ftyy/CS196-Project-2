@@ -18,7 +18,7 @@ def load_data():
 
 def main():
     #redirect if not logged in as admin
-    if not st.session_state("logged_in") or st.session_state.get("role") != "admin":
+    if not st.session_state.get("logged_in") or st.session_state.get("role") != "admin":
         st.warning("Access denies. Please log in as admin")
         st.stop
     
@@ -33,20 +33,29 @@ if st.button("Logout", key = "admin_logout"):
 st.divider()
 
 #tabs for different secionts the admin can look and view
-tab1, tab2, tab3, tab4, tab5 = st.stabs([
-    "Patients"
-    "Appointments"
-    "Billing"
-    "Analytics"
+tab1, tab2, tab3, tab4, tab5 = st.tabs([
+    "Patients",
+    "Appointments",
+    "Billing",
+    "Analytics",
     "Doctors"
 ])
 
 # Tab 1: Patients
-
+with tab1:
+    st.subheader("Patient Records")
 # Tab 2: Appointments
-
+with tab2:
+    st.subheader("All Appointments")
 # Tab 3: Billing
-
+with tab3:
+    st.subheader("Billing Records")
 # Tab 4: Analytics
-
+with tab4:
+    st.subheader("Analytics Dashboard")
 # Tab 5: Doctors
+with tab5:
+    st.subheader("Doctor Directory")
+
+if __name__ == "__main__":
+    main()
