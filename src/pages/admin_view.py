@@ -100,9 +100,21 @@ def main():
             st.markdown("**Conditions per Doctor**")
             conditons = patients['condition'].value_counts()
             fig2, ax2 = plt.subplots()
-            ax2.pie(conditon.values, labels = conditions.index, autopct = '%1.1%%%')
+            ax2.pie(conditons.values, labels = conditons.index, autopct = '%1.1%%%')
             plt.tight.layout()
             st.pyplot(fig2)
+
+        st.divider()
+
+        #summary metrics
+        col3, col4, col5 = st.columns(3)
+        with col3:
+            st.metric("Total Patients", len(patients))
+        with col4:
+            st.metric("Total Appointments", len(appointments))
+        with col5:
+            total_billed = billing['cost'].astype(float).sum()
+            st.metric("Total Billed", f"${total_billed:,.2f}")
 
 
     # Tab 5: Doctors
