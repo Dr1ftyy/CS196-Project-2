@@ -110,15 +110,16 @@ def main():
 
     #schedlue new appointment
     st.subheader("Schedule an Appointment")
-    with st.form ("schedule_appt"):
-        #build doctor options from doctors data frame
+    all_appointments = pd.read_csv(get_data_path("appointments.csv"))
+    with st.form("schedule_appt"):
         doctor_options = {f"{row['name']} ({row['specialty']}) - {row['office']}": row['doctor_id']
-                          for _, row in doctors.iterrows()}
+                        for _, row in doctors.iterrows()}
         selected_doctor = st.selectbox("Select a Doctor", list(doctor_options.keys()))
-        appt_date = st.date_input("Preffered Date")
+        appt_date = st.date_input("Preferred Date")
         appt_time = st.time_input("Preferred Time")
         reason = st.text_area("Reason for Visit")
         appt_submitted = st.form_submit_button("Request Appointment")
+
 
         if appt_submitted:
             #load a fresh copy of the appts
@@ -145,10 +146,10 @@ def main():
     #edit personal info
     st.subheader("Update Your Information")
     with st.form("update_info"):
-        new_phone = st.text_input("Phone Number", value = patient ['phone'])
-        new_email = st.text_input("Email", value = patient ['email'])
-        new_insurance = st.selectbox("Insurance Provider"
-                                     ["BlueCross", "Aetna", "United Healthcare", "Cigna", "Humana", "Other"],
+        new_phone = st.text_input("Phone Number", value=patient['phone'])
+        new_email = st.text_input("Email", value=patient['email'])
+        new_insurance = st.selectbox("Insurance Provider",
+                                  ["BlueCross", "Aetna", "United Healthcare", "Cigna", "Humana", "Other"],
                                   index=["BlueCross", "Aetna", "United Healthcare", "Cigna", "Humana", "Other"].index(patient['insurance'])
                                   if patient['insurance'] in ["BlueCross", "Aetna", "United Healthcare", "Cigna", "Humana", "Other"] else 0)
     new_condition = st.text_input("Primary Condition", value=patient['condition'])
