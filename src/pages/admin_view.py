@@ -107,6 +107,18 @@ def main():
     with tab2:
         st.subheader("All Appointments")
 
+        #filter by status
+        status_filter = st.selectbox("Filter by status", ["All", "Upcoming", "Completed"])
+        if status_filter != "All":
+            filtered_appts = appointments[appointments['status'] == status_filter]
+        else:
+            filtered_appts = appointments
+
+        #merge with patient and docotr names for readability
+        merged = filtered_appts.merge(patients[['patient_id', 'name']], on = 'patient', how = 'left')
+        merged = merged.merge(doctors[['doctor_id', 'name']], on = 'doctor_id', how = 'left', suffixes = ('_patient', '_doctor'))
+        st.dataframe(merged)
+
 
     # Tab 3: Billing
     with tab3:
