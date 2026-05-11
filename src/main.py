@@ -45,16 +45,15 @@ def main():
 
     # admin login form
     with tab1:
-        if st.session_state.show_admin_login:
-            st.subheader("Admin Login")
-            password = st.text_input("Enter Admin Password", type="password")
-            if st.button("Login as Admin"):
-                if password == "admin123":
-                    st.session_state.logged_in = True
-                    st.session_state.role = 'admin'
-                    st.rerun()
-                else:
-                    st.error("Incorrect password")
+        st.subheader("Admin Login")
+        password = st.text_input("Enter Admin Password", type="password")
+        if st.button("Login as Admin"):
+            if password == "admin123":
+                st.session_state.logged_in = True
+                st.session_state.role = 'admin'
+                st.rerun()
+            else:
+                st.error("Incorrect password")
 
     # patient login form
     with tab2:
