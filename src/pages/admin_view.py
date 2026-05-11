@@ -132,16 +132,16 @@ def main():
                 paid = st.selectbox("Paid?", ["No", "Yes"])
             bill_submitted = st.form_submit_button("Add Billing Record")
 
-        if bill_submitted:
-            existing_ids = billing['billing_id'].str.replace('A', '').astype(int)
-            new_bill_id = f"A{existing_ids.max() + 1:03d}"
-            pid = bill_patient.split(" - ")[0]
-            new_bill = pd.DataFrame([new_bill,  pid, bill_appt, procedure, cost, coverage/100, paid],
-                                    columns = billing.columns)
-            updated_billing = pd.concat([billing, new_bill], ignore_index = True)
-            updated_billing.to_csv(get_data_path("billing.csv"), index = False)
-            st.success("Billing record added!")
-            st.rerun()
+            if bill_submitted:
+                existing_ids = billing['billing_id'].str.replace('A', '').astype(int)
+                new_bill_id = f"A{existing_ids.max() + 1:03d}"
+                pid = bill_patient.split(" - ")[0]
+                new_bill = pd.DataFrame([new_bill,  pid, bill_appt, procedure, cost, coverage/100, paid],
+                                        columns = billing.columns)
+                updated_billing = pd.concat([billing, new_bill], ignore_index = True)
+                updated_billing.to_csv(get_data_path("billing.csv"), index = False)
+                st.success("Billing record added!")
+                st.rerun()
 
     # Tab 4: Analytics
     with tab4:
