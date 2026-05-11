@@ -24,7 +24,7 @@ def main():
     
     st.title("🏥 MedDesk - Admin Panel")
 
-    st.divider()
+    
 
     #logout button
     if st.button("Logout", key = "admin_logout"):
@@ -33,7 +33,7 @@ def main():
         st.session_state.show_admin_login = False
         st.switch_page("main.py")
     
-st.divider()
+#st.divider()
 
 #tabs for different secionts the admin can look and view
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
