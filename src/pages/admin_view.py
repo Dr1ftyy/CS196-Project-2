@@ -1,7 +1,7 @@
 import os
 import streamlit as st
 import pandas as pd
-import matplotlib as plt
+#import matplotlib as plt
 
 APP_PATH = os.path.dirname(os.path.abspath(os.path.join(__file__, "..")))
 
@@ -32,3 +32,11 @@ if st.button("Logout", key = "admin_logout"):
     
 st.divider()
 
+#tabs for different secionts the admin can look and view
+tab1, tab2, tab3, tab4, tab5 = st.stabs([
+    "Patients"
+    "Appointments"
+    "Billing"
+    "Analytics"
+    "Doctors"
+])
