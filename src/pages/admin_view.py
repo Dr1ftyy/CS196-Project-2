@@ -40,3 +40,13 @@ tab1, tab2, tab3, tab4, tab5 = st.stabs([
     "Analytics"
     "Doctors"
 ])
+
+# Tab 1: Patients
+
+# Tab 2: Appointments
+
+# Tab 3: Billing
+
+# Tab 4: Analytics
+
+# Tab 5: Doctors
