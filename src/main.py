@@ -29,14 +29,9 @@ def main():
             st.switch_page("pages/patient_view.py")
         return
 
-    # top right admin button
-    col1, col2 = st.columns([8, 1])
-    with col2:
-        if st.button("Admin"):
-            st.session_state.show_admin_login = True
-    with col1:
-        st.title("🏥 MedDesk")
-        st.subheader("Patient Portal")
+    # title at the top
+    st.title("Welcome 🏥 MedDesk")
+    st.subheader("Patient Portal")
 
     st.divider()
     
