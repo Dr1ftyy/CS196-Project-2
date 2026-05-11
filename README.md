@@ -49,17 +49,6 @@ New patients can register directly from the login screen.
 ---
 
 ### Project Structure
----MedDesk
----Dist
-----Data
------appointments.csv
------billing.csv
------doctors.csv
------patients.csv
-----Pages
------admin_view.py
------patient.view.py
-----main.py
 
 ---
 
