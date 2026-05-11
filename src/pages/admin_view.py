@@ -61,18 +61,48 @@ def main():
         st.dataframe(filtered, use_container_width = True)
 
         st.divider
+
+        
     # Tab 2: Appointments
     with tab2:
         st.subheader("All Appointments")
+
+
     # Tab 3: Billing
     with tab3:
         st.subheader("Billing Records")
+
+
     # Tab 4: Analytics
     with tab4:
         st.subheader("Analytics Dashboard")
+
+
     # Tab 5: Doctors
     with tab5:
         st.subheader("Doctor Directory")
+        st.dataframe(doctors, use_container_width = True)
+
+        st.divider()
+
+        st.subheader("Add Doctor")
+        with st.form("add_doctor"):
+            col1, col2 st.columns(2)
+            with col1:
+                doc_name = st.text_input("Doctor's Name")
+                specialty = st.text_input("Speciality")
+            with col2:
+                office = st.text_input("Office")
+            doc_submited = st.form_submit_button("Add Doctor")
+
+        if doc_submited:
+            new_doc_id = f"D{len(doctors) + 1:03d}"
+            new_doc = pd.DataFrame([[new_doc_id, doc_name, specialty, office]],
+                                   columns = doctors.columns)
+            updated_doctors = pd.concat([doctors, new_doc] ignore_index = True)
+            updated_doctors.to_csv(get_data_path("doctors.csv"), index = False)
+            st.success(f"Doctor added with ID {new_doc_id}!")
+            st.rerun()
 
 if __name__ == "__main__":
     main()
