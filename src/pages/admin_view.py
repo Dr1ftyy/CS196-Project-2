@@ -100,8 +100,8 @@ def main():
             st.markdown("**Conditions per Doctor**")
             conditons = patients['condition'].value_counts()
             fig2, ax2 = plt.subplots()
-            ax2.pie(conditons.values, labels = conditons.index, autopct = '%1.1%%%')
-            plt.tight.layout()
+            ax2.pie(conditons.values, labels = conditons.index, autopct = '%1.1f%%')
+            plt.tight_layout()
             st.pyplot(fig2)
 
         st.divider()
