@@ -99,7 +99,7 @@ def main():
             updated = patients[patients['patient_id'] != pid]
             updated.to_csv(get_data_path("patients.csv"), index = False)
             st.success(f"Patient {pid} deleted!")
-            st.rerun
+            st.rerun()
         
 
     # Tab 2: Appointments

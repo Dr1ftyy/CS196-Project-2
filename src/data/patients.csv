@@ -1,2 +1,2 @@
 patient_id,name,dob,phone,email,insurance,condition
-P003,James Lee,1978-11-05,555-9012,james@email.com,United,Asthma
+P002,John Smith,1956-12-12,555-4567,john@email.com,BlueCross,Hypertension
