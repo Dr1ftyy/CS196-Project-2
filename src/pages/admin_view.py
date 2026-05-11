@@ -51,7 +51,16 @@ def main():
 
         #search bar
         search = st.text_input("Search by name or patient ID")
-        
+        if search:
+            filtered = patients[
+                patients['name'].str.contains(search, case = False) | 
+                patients['patient_id'].str.contains(search, case = False)
+            ]
+        else: filtered = patients
+
+        st.dataframe(filtered, use_container_width = True)
+
+        st.divider
     # Tab 2: Appointments
     with tab2:
         st.subheader("All Appointments")
