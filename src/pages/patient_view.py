@@ -118,15 +118,15 @@ def main():
         appt_date = st.date_input("Preffered Date")
         appt_time = st.time_input("Preferred Time")
         reason = st.text_area("Reason for Visit")
-        submittetd = st.form_submit_button("Request Appointment")
+        appt_submitted = st.form_submit_button("Request Appointment")
 
-        if submitted:
+        if appt_submitted:
             #load a fresh copy of the appts
             all_appointments = pd.read_csv(get_data_path("appointments.csv"))
             new_appt_id = f"A{len(all_appointments) + 1:03d}"
             doctor_id = doctor_options[selected_doctor]
             new_appt = pd.DataFrame([[
-                new_appt_id,
+            new_appt_id,
             patient_id,
             doctor_id,
             str(appt_date),
