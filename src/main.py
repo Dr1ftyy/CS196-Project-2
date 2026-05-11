@@ -30,8 +30,8 @@ def main():
         return
 
     # title at the top
-    st.title("Welcome 🏥 MedDesk")
-    st.subheader("Patient Portal")
+    st.title("🏥 MedDesk Portal")
+    st.subheader("Login below")
 
     st.divider()
     

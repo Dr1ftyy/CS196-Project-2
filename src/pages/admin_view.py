@@ -19,17 +19,19 @@ def load_data():
 def main():
     #redirect if not logged in as admin
     if not st.session_state.get("logged_in") or st.session_state.get("role") != "admin":
-        st.warning("Access denies. Please log in as admin")
-        st.stop
+        st.warning("Access denied. Please log in as admin")
+        st.stop()
     
     st.title("🏥 MedDesk - Admin Panel")
 
-#logout button
-if st.button("Logout", key = "admin_logout"):
-    st.session_state.logged_in = False
-    st.session_state.role = None
-    st.session_state.show_admin_login = False
-    st.switch_page("main.py")
+    st.divider()
+
+    #logout button
+    if st.button("Logout", key = "admin_logout"):
+        st.session_state.logged_in = False
+        st.session_state.role = None
+        st.session_state.show_admin_login = False
+        st.switch_page("main.py")
     
 st.divider()
 
