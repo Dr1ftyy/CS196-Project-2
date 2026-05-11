@@ -64,6 +64,34 @@ def main():
 
         st.divider()
 
+        #add a new patient
+        st.subheader("Add New Patient")
+        with st.form("admin_add_patient"):
+            col1, col2 = st.columns(2)
+            with col1:
+                name = st.text_input("Full Name")
+                dob = st.text_input("Date of Birth (YYYY-MM-DD)")
+                phone = st.text_input("Phone")
+            with col2:
+                email = st.text_input("email")
+                insurance = st.selectbox("Insurance", ["BlueCross", "Aetna", "United Healthcare", "Cigna", "Humana", "Other"])
+                condition = st.text_input("Primary Condition")
+            add_submitted = st.form_submit_button("Add Patient")
+
+            if add_submitted:
+                new_id = f"P{len(patients) + 1:03d}"
+                new_row = pd.DataFrame([[new_id, name, dob, phone, email, insurance, condition]],
+                                       columns = patients.columns)
+                updated = pd.concat([patients, new_row], ignore_index = True)
+                updated.to_csv(get_data_path("patients.csv"), index = False)
+                st.success(f"Patient added with ID {new_id}!")
+                st.rerun()
+
+            st.divider()
+
+            #delete patient
+            st.subheader("Delete Patient")
+            
         
 
     # Tab 2: Appointments
