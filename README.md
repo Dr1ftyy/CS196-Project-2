@@ -48,6 +48,21 @@ New patients can register directly from the login screen.
 
 ---
 
+### Project Structure
+---MedDesk
+---Dist
+----Data
+-----appointments.csv
+-----billing.csv
+-----doctors.csv
+-----patients.csv
+----Pages
+-----admin_view.py
+-----patient.view.py
+----main.py
+
+---
+
 ## Data & Save/Load
 
 All data is stored in CSV files inside the `data/` folder. Every time the app is restarted, it reads fresh from the CSVs so all changes are retained. Writing back to CSV happens whenever a user adds, edits, or deletes a record.
