@@ -1,0 +1,4 @@
+appointment_id,patient_id,doctor_id,date,time,notes,status,getting_better
+A001,P001,D001,2026-05-01,10:00,Blood pressure stable,Completed,Yes
+A002,P002,D002,2026-05-03,14:00,Adjusting insulin dosage,Upcoming,
+A003,P003,D003,2026-05-05,09:00,Inhaler prescription renewed,Upcoming,
