@@ -48,27 +48,6 @@ New patients can register directly from the login screen.
 
 ---
 
-## File Structure
-├── README.md                  # This file
-├── demo.mp4                   # Gameplay demo clip
-├── src/                       # Development code
-│   ├── data/
-│   │   ├── patients.csv       # Patient records
-│   │   ├── appointments.csv   # Appointment records
-│   │   ├── doctors.csv        # Doctor directory
-│   │   └── billing.csv        # Billing records
-│   ├── pages/
-│   │   ├── patient_view.py    # Patient portal page
-│   │   └── admin_view.py      # Admin/secretary dashboard
-│   └── main.py                # Entry point and login screen
-└── dist/                      # Production code (graded version)
-├── data/                  # Stable data files
-├── pages/
-│   ├── patient_view.py
-│   └── admin_view.py
-└── main.py
----
-
 ## Data & Save/Load
 
 All data is stored in CSV files inside the `data/` folder. Every time the app is restarted, it reads fresh from the CSVs so all changes are retained. Writing back to CSV happens whenever a user adds, edits, or deletes a record.
