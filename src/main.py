@@ -39,21 +39,25 @@ def main():
         st.subheader("Patient Portal")
 
     st.divider()
+    
+    tab1, tab2 = st.tabs(["Admin", "Patient Login"])
+
 
     # admin login form
-    if st.session_state.show_admin_login:
-        st.subheader("Admin Login")
-        password = st.text_input("Enter Admin Password", type="password")
-        if st.button("Login as Admin"):
-            if password == "admin123":
-                st.session_state.logged_in = True
-                st.session_state.role = 'admin'
-                st.rerun()
-            else:
-                st.error("Incorrect password")
+    with tab1:
+        if st.session_state.show_admin_login:
+            st.subheader("Admin Login")
+            password = st.text_input("Enter Admin Password", type="password")
+            if st.button("Login as Admin"):
+                if password == "admin123":
+                    st.session_state.logged_in = True
+                    st.session_state.role = 'admin'
+                    st.rerun()
+                else:
+                    st.error("Incorrect password")
 
     # patient login form
-    else:
+    with tab2:
         st.subheader("Patient Login")
         patients_df = pd.read_csv(get_data_path("patients.csv"))
         valid_ids = patients_df['patient_id'].str.upper().tolist()
