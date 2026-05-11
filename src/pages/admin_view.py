@@ -131,7 +131,24 @@ def main():
         appt_row = appointments[appointments['appointment_id'] == appt_id].iloc[0]
 
         with st.form("update_appt"):
-            new_notes = 
+            new_notes = st.text_area("Doctor Notes", value=str(appt_row['notes']))
+            new_status = st.selectbox("Status", ["Upcoming", "Completed"],
+                                       index=0 if appt_row['status'] == "Upcoming" else 1)
+            getting_better = st.selectbox("Is patient getting better?", ["", "Yes", "No", "Stable"],
+                                           index=["", "Yes", "No", "Stable"].index(str(appt_row['getting_better']))
+                                           if str(appt_row['getting_better']) in ["", "Yes", "No", "Stable"] else 0)
+            update_submitted = st.form_submit_button("Update Appointment")
+
+        if update_submitted:
+            all_appts = pd.read_csv(get_data_path("appointments.csv"))
+            all_appts.loc[all_appts['appointment_id'] == appt_id, 'notes'] = new_notes
+            all_appts.loc[all_appts['appointment_id'] == appt_id, 'status'] = new_status
+            all_appts.loc[all_appts['appointment_id'] == appt_id, 'getting_better'] = getting_better
+            all_appts.to_csv(get_data_path("appointments.csv"), index=False)
+            st.success("Appointment updated!")
+            st.rerun()
+
+        st.divider()
 
 
     # Tab 3: Billing
