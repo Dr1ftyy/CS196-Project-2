@@ -149,6 +149,15 @@ def main():
             st.rerun()
 
         st.divider()
+        #delete appointment
+        st.subheader("Delete Appointment")
+        appt_to_delete = st.selectbox("Select appointment to delete", appt_options, key="delete_appt")
+        if st.button("Delete Appointment", key="delete_appt_btn"):
+            aid = appt_to_delete.split(" — ")[0]
+            updated = appointments[appointments['appointment_id'] != aid]
+            updated.to_csv(get_data_path("appointments.csv"), index=False)
+            st.success(f"Appointment {aid} deleted!")
+            st.rerun()
 
 
     # Tab 3: Billing
