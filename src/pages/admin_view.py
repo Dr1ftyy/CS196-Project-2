@@ -88,6 +88,14 @@ def main():
             merged_appts = appointments.merge(doctors[['doctor_id', 'name']], on = 'doctor_id', how = 'left')
             patients_per_doctor = merged_appts.groupby('name')['patient_id'].nunique()
             fig1, ax1 = plt.subplots
+            ax1.bar(patients_per_doctor.index, patients_per_doctor.values, color = 'steelblue')
+            ax1.set_xlabel("Doctor")
+            ax1.set_ylabel("Unique Patients")
+            plt.xticks(rotation = 45, ha = 'right')
+            plt.tight_layout()
+            st.pyplot(fig1)
+        
+        with col2: 
 
 
     # Tab 5: Doctors
