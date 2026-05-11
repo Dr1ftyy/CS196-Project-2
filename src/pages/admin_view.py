@@ -15,3 +15,13 @@ def load_data():
     doctors = pd.read_csv(get_data_path("doctors.csv"))
     billing = pd.read_csv(get_data_path("billing.csv"))
     return patients, appointments, doctors, billing
+
+def main():
+    #redirect if not logged in as admin
+    if not st.session_state("logged_in") or st.session_state.get("role") != "admin":
+        st.warning("Access denies. Please log in as admin")
+        st.stop
+    
+    st.title("🏥 MedDesk - Admin Panel")
+
+    st.divider()
