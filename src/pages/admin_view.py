@@ -115,7 +115,7 @@ def main():
             filtered_appts = appointments
 
         #merging patient and docotor names so that its easy to read
-        merged = filtered_appts.merge(patients[['patient_id', 'name']], on = 'patient', how = 'left')
+        merged = filtered_appts.merge(patients[['patient_id', 'name']], on='patient_id', how='left')
         merged = merged.merge(doctors[['doctor_id', 'name']], on = 'doctor_id', how = 'left', suffixes = ('_patient', '_doctor'))
         st.dataframe(merged[['appointment_id', 'name_patient', 'name_doctor', 'date', 'time', 'status', 'notes', 'getting_better']],
                      use_container_width = True)
