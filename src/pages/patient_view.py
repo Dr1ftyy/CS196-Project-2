@@ -161,7 +161,7 @@ def main():
         all_patients.loc[all_patients['patient_id'] == patient_id, 'email'] = new_email
         all_patients.loc[all_patients['patient_id'] == patient_id, 'insurance'] = new_insurance
         all_patients.loc[all_patients['patient_id'] == patient_id, 'condition'] = new_condition
-        all_patients.to_csv(get_data_path)("patients.csv"), index = False
+        all_patients.to_csv(get_data_path("patients.csv"), index = False)
         st.success("Your information has been updated!")
         st.rerun()
 
