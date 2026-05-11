@@ -127,19 +127,19 @@ def main():
             new_appt_id = f"A{len(all_appointments) + 1:03d}"
             doctor_id = doctor_options[selected_doctor]
             new_appt = pd.DataFrame([[
-            new_appt_id,
-            patient_id,
-            doctor_id,
-            str(appt_date),
-            str(appt_time),
-            reason,
-            "Upcoming",
-            ""
-        ]], columns=all_appointments.columns)
-        updated_appointments = pd.concat([all_appointments, new_appt], ignore_index=True)
-        updated_appointments.to_csv(get_data_path("appointments.csv"), index=False)
-        st.success(f"Appointment requested for {appt_date} at {appt_time}!")
-        st.rerun()
+                new_appt_id,
+                patient_id,
+                doctor_id,
+                str(appt_date),
+                str(appt_time),
+                reason,
+                "Upcoming",
+                ""
+            ]], columns=all_appointments.columns)
+            updated_appointments = pd.concat([all_appointments, new_appt], ignore_index=True)
+            updated_appointments.to_csv(get_data_path("appointments.csv"), index=False)
+            st.success(f"Appointment requested for {appt_date} at {appt_time}!")
+            st.rerun()
 
     st.divider()
 
@@ -152,8 +152,8 @@ def main():
                                   ["BlueCross", "Aetna", "United Healthcare", "Cigna", "Humana", "Other"],
                                   index=["BlueCross", "Aetna", "United Healthcare", "Cigna", "Humana", "Other"].index(patient['insurance'])
                                   if patient['insurance'] in ["BlueCross", "Aetna", "United Healthcare", "Cigna", "Humana", "Other"] else 0)
-    new_condition = st.text_input("Primary Condition", value=patient['condition'])
-    save = st.form_submit_button("Save Changes")
+        new_condition = st.text_input("Primary Condition", value=patient['condition'])
+        save = st.form_submit_button("Save Changes")
 
     if save:
         # load fresh copy and update the matching row
